@@ -37,10 +37,12 @@ export default function App() {
 
 	function handleShowAddFriend() {
 		setShowAddFriend((curr) => !curr);
+		setCurrSelection(null);
 	}
 
 	function handleSelection(friend) {
-		setCurrSelection(friend);
+		setCurrSelection((curr) => (curr?.id === friend.id ? null : friend));
+		setShowAddFriend(false);
 	}
 
 	function handleBalance(balance) {
@@ -59,6 +61,7 @@ export default function App() {
 			<div className="sidebar">
 				<FriendList
 					friendList={friendList}
+					selectedFriend={currSelection}
 					onSelect={handleSelection}
 				/>
 				{showAddFriend && (

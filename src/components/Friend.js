@@ -1,7 +1,9 @@
 import React from "react";
 import { Button } from "./Button";
 
-export function Friend({ friend, onSelect }) {
+export function Friend({ friend, onSelect, selectedFriend }) {
+	const activeBillUi = selectedFriend?.id === friend.id;
+
 	return (
 		<li>
 			<img
@@ -22,7 +24,13 @@ export function Friend({ friend, onSelect }) {
 				</p>
 			)}
 			{friend.balance === 0 && <p>You and {friend.name} are even</p>}
-			<Button anyFunction={() => onSelect(friend)}>Select</Button>
+			<Button
+				anyFunction={() => {
+					onSelect(friend);
+				}}
+			>
+				{activeBillUi ? "Close" : "Select"}
+			</Button>
 		</li>
 	);
 }
