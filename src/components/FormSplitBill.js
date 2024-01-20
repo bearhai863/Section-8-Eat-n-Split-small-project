@@ -29,7 +29,6 @@ export function FormSplitBill({ selectedFriend, onBalance }) {
 				type="text"
 				value={bill}
 				onChange={(e) => setBill(Number(e.target.value))}
-                required
 			/>
 
 			<label>🧑 Your expense</label>
@@ -37,7 +36,6 @@ export function FormSplitBill({ selectedFriend, onBalance }) {
 				type="text"
 				value={myExpense}
 				onChange={(e) => setMyExpense(Number(e.target.value))}
-                required
 			/>
 
 			<label>👫 {selectedFriend.name}'s expense</label>
