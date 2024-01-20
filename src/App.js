@@ -49,7 +49,7 @@ export default function App() {
 		setFriendList((currFriendlist) =>
 			currFriendlist.map((friend) =>
 				friend.id === currSelection.id
-					? { ...friend, balance: balance }
+					? { ...friend, balance: friend.balance + balance }
 					: friend
 			)
 		);

@@ -6,9 +6,15 @@ export function FormSplitBill({ selectedFriend, onBalance }) {
 	const [myExpense, setMyExpense] = useState("");
 	const friendExpense = bill - myExpense;
 	const [whoPaid, setWhoPaid] = useState("user");
-	const displayCondition = !bill && !myExpense;
+	const displayCondition = !bill || !myExpense;
 	const balance =
 		whoPaid === "user" ? bill - myExpense : (bill - friendExpense) * -1;
+
+	function resetData() {
+		setBill("");
+		setMyExpense("");
+		setWhoPaid("user");
+	}
 
 	return (
 		<form
@@ -17,9 +23,7 @@ export function FormSplitBill({ selectedFriend, onBalance }) {
 				e.preventDefault();
 				if (displayCondition) return;
 				onBalance(balance);
-				setBill("");
-				setMyExpense("");
-				setWhoPaid("user");
+				resetData();
 			}}
 		>
 			<h2>Split a bill with {selectedFriend.name}</h2>
@@ -39,11 +43,7 @@ export function FormSplitBill({ selectedFriend, onBalance }) {
 			/>
 
 			<label>👫 {selectedFriend.name}'s expense</label>
-			<input
-				type="text"
-				value={friendExpense === 0 ? "" : friendExpense}
-				disabled
-			/>
+			<input type="text" value={friendExpense} disabled />
 
 			<label>🤑 Who is paying the bill</label>
 			<select
