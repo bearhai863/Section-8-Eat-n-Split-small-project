@@ -22,7 +22,7 @@ export function Friend({ friend, onSelect }) {
 				</p>
 			)}
 			{friend.balance === 0 && <p>You and {friend.name} are even</p>}
-			<Button anyFunction={() => onSelect(friend.id)}>Select</Button>
+			<Button anyFunction={() => onSelect(friend)}>Select</Button>
 		</li>
 	);
 }

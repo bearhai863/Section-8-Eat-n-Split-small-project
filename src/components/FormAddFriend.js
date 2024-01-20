@@ -8,6 +8,8 @@ export function FormAddFriend({ onAddFriend }) {
 	function handleSubmit(e) {
 		e.preventDefault();
 
+		if (!name) return;
+
 		const newFriend = {
 			id: Math.random(),
 			name,

@@ -28,8 +28,7 @@ const initialFriends = [
 export default function App() {
 	const [friendList, setFriendList] = useState(initialFriends);
 	const [showAddFriend, setShowAddFriend] = useState(false);
-	const [currSelection, setCurrSelection] = useState("id");
-	const currActive = friendList.find((friend) => friend.id === currSelection);
+	const [currSelection, setCurrSelection] = useState(null);
 
 	function handleAddFriend(newFriend) {
 		setFriendList((currFriendlist) => [...currFriendlist, newFriend]);
@@ -40,18 +39,19 @@ export default function App() {
 		setShowAddFriend((curr) => !curr);
 	}
 
-	function handleSelection(id) {
-		setCurrSelection(id);
+	function handleSelection(friend) {
+		setCurrSelection(friend);
 	}
 
 	function handleBalance(balance) {
 		setFriendList((currFriendlist) =>
 			currFriendlist.map((friend) =>
-				friend.id === currSelection
+				friend.id === currSelection.id
 					? { ...friend, balance: balance }
 					: friend
 			)
 		);
+		setCurrSelection(null);
 	}
 
 	return (
@@ -69,9 +69,9 @@ export default function App() {
 				</Button>
 			</div>
 			<div>
-				{currActive && (
+				{currSelection && (
 					<FormSplitBill
-						currActive={currActive}
+						selectedFriend={currSelection}
 						onBalance={handleBalance}
 					/>
 				)}
