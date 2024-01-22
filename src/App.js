@@ -32,7 +32,7 @@ export default function App() {
 
 	function handleAddFriend(newFriend) {
 		setFriendList((currFriendlist) => [...currFriendlist, newFriend]);
-		handleShowAddFriend();
+		setShowAddFriend(false);
 	}
 
 	function handleShowAddFriend() {

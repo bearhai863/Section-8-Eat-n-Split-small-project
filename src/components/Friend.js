@@ -5,7 +5,7 @@ export function Friend({ friend, onSelect, selectedFriend }) {
 	const activeBillUi = selectedFriend?.id === friend.id;
 
 	return (
-		<li>
+		<li className={activeBillUi ? "selected" : ""}>
 			<img
 				src={
 					friend.image ? friend.image : "default profile picture.webp"
