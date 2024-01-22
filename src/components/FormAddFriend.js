@@ -11,7 +11,7 @@ export function FormAddFriend({ onAddFriend }) {
 		if (!name) return;
 
 		const newFriend = {
-			id: Math.random(),
+			id: crypto.randomUUID(),
 			name,
 			image,
 			balance: 0,
