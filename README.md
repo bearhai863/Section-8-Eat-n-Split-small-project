@@ -4,3 +4,5 @@ Topic focus
 1. every basic of State
 2. Conditional Rendering
 3. Reusability Components & Children Prop
+
+Ps: One Bug is not fixed yet at Splitbill Components.
