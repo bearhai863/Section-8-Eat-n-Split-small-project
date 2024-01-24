@@ -76,6 +76,7 @@ export default function App() {
 					<FormSplitBill
 						selectedFriend={currSelection}
 						onBalance={handleBalance}
+                        key={currSelection.id}
 					/>
 				)}
 			</div>
